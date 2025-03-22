@@ -9,16 +9,20 @@ const User = databaseConnection.define("user", {
   },
   name: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   birthdate: {
     type: DataTypes.DATEONLY,
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
     unique: true,
+    allowNull: false,
   },
   password: {
     type: DataTypes.STRING,
+    allowNull: false,
   }
 });
 

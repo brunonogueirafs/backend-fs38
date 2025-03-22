@@ -39,6 +39,10 @@ authRouter.post("/register", async (request, response) => {
         email
     } = request.body;
 
+    if (!name || !password || !email) {
+        return response.status(400).json({ message: "all fields are required"})
+    }
+
     const userAlreadyExists = await User.findOne({
         where: {
             email
@@ -46,7 +50,7 @@ authRouter.post("/register", async (request, response) => {
     });
 
     if (userAlreadyExists !== null) {
-        return response.json({ message: "User already exists" }, 400)
+        return response.status(400).json({ message: "User already exists" })
     }
 
     /**
